@@ -1,22 +1,24 @@
 import Button from './Button'
-import Post from './Post'
+import Comment from './Comment'
+import ContentBox from './ContentBox'
 import Header from './Header'
 import Layout from './Layout'
-import LoginForm from './LoginForm'
-import Spinner from './Spinner'
 import Login from './Login'
-import ContentBox from './ContentBox'
+import LoginForm from './LoginForm'
 import Modal from './Modal'
-import Comment from './Comment'
+import Post from './Post'
+import SearchInput from './SearchInput'
+import Spinner from './Spinner'
 export {
   Button,
-  Post,
+  Comment,
+  ContentBox,
   Header,
   Layout,
-  LoginForm,
-  Spinner,
   Login,
-  ContentBox,
+  LoginForm,
   Modal,
-  Comment
+  Post,
+  SearchInput,
+  Spinner,
 }

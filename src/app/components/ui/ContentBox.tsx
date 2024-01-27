@@ -1,44 +1,27 @@
 'use client'
 
-import { PostType } from '@/app/types/users'
-import { Suspense, useEffect, useState } from 'react'
-import { Comment, Modal, Post, Spinner } from '.'
+import usePosts from '@/app/hooks/usePosts'
+import { Suspense } from 'react'
+import { Comment, Modal, Post, SearchInput, Spinner } from '.'
 
 interface ContentBoxProps {
   children?: React.ReactNode
 }
 
 const ContentBox: React.FC<ContentBoxProps> = () => {
-  const [posts, setPosts] = useState<PostType[]>([])
-  const [openModal, setOpenModal] = useState<boolean>(false)
-  const [dataModal, setDataModal] = useState<any>()
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const res = await fetch('/api/posts')
-      const newPosts = await res.json()
-      setPosts(newPosts.data)
-    }
-    fetchPosts()
-  }, [])
-  const handleModal = () => {
-    setOpenModal(!openModal)
-  }
-  const handleClick = (id: string) => {
-    const fetchPosts = async () => {
-      const res = await fetch(`/api/posts/comments/${id}`)
-      const newPosts = await res.json()
-
-      if (newPosts.data.length === 0) return
-      setDataModal(newPosts.data)
-      handleModal()
-    }
-    fetchPosts()
-  }
-
+  const {
+    dataFilter,
+    handleClick,
+    handleModal,
+    handleSearch,
+    openModal,
+    dataModal,
+  } = usePosts()
   return (
     <div
-      className={`flex relative flex-col min-h-[85svh] z-1000 w-full justify-between  `}
+      className={`flex relative flex-col min-h-[50svh] z-1000 w-full justify-between  `}
     >
+      <SearchInput onSearch={handleSearch} />
       <Modal isOpen={openModal} onClose={handleModal}>
         <div>
           <h1 className="text-xl font-bold antialised text-indigo-950 mb-5 ">
@@ -61,18 +44,12 @@ const ContentBox: React.FC<ContentBoxProps> = () => {
           <p className="text-indigo-900">{dataModal?.text}</p>
         </div>
       </Modal>
-      <div className="flex gap-10">
+      <>
         <div className={`w-3/5 mx-auto  rounded-2xl`}>
           <div className="flex  flex-col justify-center items-center">
-            <Suspense
-              fallback={
-                <div className="mt-10">
-                  <Spinner size={10} />
-                </div>
-              }
-            >
-              {posts.length ? (
-                posts.map((post, index) => (
+            <Suspense fallback={<Spinner size={10} />}>
+              {dataFilter.length ? (
+                dataFilter.map((post, index) => (
                   <Post
                     key={post.id}
                     title={post.text}
@@ -86,15 +63,13 @@ const ContentBox: React.FC<ContentBoxProps> = () => {
                   />
                 ))
               ) : (
-                <div className="mt-40">
-                  <Spinner size={10} />
-                </div>
+                <Spinner size={10} />
               )}
             </Suspense>
             <Spinner />
           </div>
         </div>
-      </div>
+      </>
     </div>
   )
 }
