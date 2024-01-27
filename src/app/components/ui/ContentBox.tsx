@@ -26,19 +26,18 @@ const ContentBox: React.FC<ContentBoxProps> = () => {
         <div>
           <h1 className="text-xl font-bold antialised text-indigo-950 mb-5 ">
             <div className="flex flex-col gap-5">
-              {dataModal?.length
-                ? dataModal.map((item: any, index: number) => {
-                    return (
-                      <Comment
-                        key={index}
-                        img={item.owner.picture}
-                        message={item.message}
-                        name={item.owner.firstName}
-                        date={item.publishDate}
-                      />
-                    )
-                  })
-                : 'No comments'}
+              {dataModal?.length &&
+                dataModal.map((item: any, index: number) => {
+                  return (
+                    <Comment
+                      key={index}
+                      img={item.owner.picture}
+                      message={item.message}
+                      name={item.owner.firstName}
+                      date={item.publishDate}
+                    />
+                  )
+                })}
             </div>
           </h1>
           <p className="text-indigo-900">{dataModal?.text}</p>

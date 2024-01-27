@@ -8,23 +8,11 @@ export const authOptions = {
         password: { label: 'Password', type: 'password', placeholder: '*****' },
       },
       async authorize(credentials, req): Promise<any> {
-        // const userFound = await db.user.findUnique({
-        //   where: {
-        //     email: credentials.email,
-        //   },
-        // })
         const userFound = {
           userName: 'test',
           email: '',
         }
         if (!userFound) throw new Error('No user found')
-
-        // const matchPassword = await bcrypt.compare(
-        //   credentials.password,
-        //   userFound.password,
-        // )
-
-        // if (!matchPassword) throw new Error('Wrong password')
 
         return {
           email: credentials?.email,
@@ -39,12 +27,6 @@ export const authOptions = {
       return token
     },
     async session({ session, user }: any) {
-      //   const userFound = await db.user.findUnique({
-      //     where: {
-      //       email: session.user.email,
-      //     },
-      //   })
-
       const userFound = {
         id: 1,
         userName: 'test',
@@ -57,6 +39,6 @@ export const authOptions = {
     },
   },
   pages: {
-    signIn: '/auth/components',
+    signIn: '/auth/posts',
   },
 }

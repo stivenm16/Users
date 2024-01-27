@@ -20,11 +20,18 @@ const Header: React.FC = () => {
 
             {session.data?.user?.email && (
               <>
+                <></>
                 <Link
                   href={'/auth/posts'}
                   className="text-sm font-medium hover:text-white flex items-center"
                 >
                   Posts
+                </Link>
+                <Link
+                  href={'/auth/users'}
+                  className="text-sm font-medium hover:text-white flex items-center"
+                >
+                  Users
                 </Link>
                 <Button
                   label="Logout"

@@ -1,5 +1,3 @@
-// SearchInput.tsx
-
 import React, { ChangeEvent } from 'react'
 
 interface SearchInputProps {
