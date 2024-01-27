@@ -16,10 +16,7 @@ const ContentContext = createContext<ContentContextProps>({
 })
 
 const ContentProvider: React.FC<ContentProviderProps> = ({ children }) => {
-  const [currentContent, setCurrentContent] = useState<string | null>(
-    // dataStructure.StateLess[0].title,
-    'title 1',
-  )
+  const [currentContent, setCurrentContent] = useState<string | null>('')
 
   const changeContent = (newContent: string | null) => {
     setCurrentContent(newContent)

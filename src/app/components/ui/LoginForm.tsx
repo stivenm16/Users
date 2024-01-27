@@ -33,10 +33,6 @@ const LoginForm = () => {
   const onSubmit = async (data: IFormInput) => {
     if (data) {
       if (isRegister) {
-        // Logica de login, llamada al endpoint de login
-        //
-        // await fetch('/api/auth/login', {}
-
         const res = await signIn('credentials', {
           email: data.email,
           password: data.password,
@@ -45,11 +41,10 @@ const LoginForm = () => {
         if (res?.error) {
           setError(res?.error)
         } else {
-          router.push('/auth/components')
+          router.push('/auth/posts')
           router.refresh()
         }
       } else {
-        // Logica de registro, llamada al endpoint de crear usuario
         setIsRegister(true)
       }
     }

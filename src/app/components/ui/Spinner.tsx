@@ -7,7 +7,7 @@ const Spinner = ({ size }: Props) => {
       <div
         className={`animate-spin rounded-full h-${!size ? '12' : size} w-${
           !size ? '12' : size
-        } border-t-4 border-indigo-700`}
+        } border-t-4 border-white`}
       ></div>
     </div>
   )
