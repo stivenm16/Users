@@ -6,7 +6,7 @@ interface SearchInputProps {
 
 const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const query = e.target.value
+    const query = e.target.value.toLocaleLowerCase()
     onSearch(query)
   }
 
