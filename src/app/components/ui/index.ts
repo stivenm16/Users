@@ -6,4 +6,17 @@ import LoginForm from './LoginForm'
 import Spinner from './Spinner'
 import Login from './Login'
 import ContentBox from './ContentBox'
-export { Button, Post, Header, Layout, LoginForm, Spinner, Login, ContentBox }
+import Modal from './Modal'
+import Comment from './Comment'
+export {
+  Button,
+  Post,
+  Header,
+  Layout,
+  LoginForm,
+  Spinner,
+  Login,
+  ContentBox,
+  Modal,
+  Comment
+}

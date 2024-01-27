@@ -6,9 +6,9 @@ import { ContentProvider } from './redux/ContentContex'
 const page = () => {
   return (
     <Layout>
-      <ContentProvider>
+      {/* <ContentProvider> */}
         <ContentBox />
-      </ContentProvider>
+      {/* </ContentProvider> */}
     </Layout>
   )
 }

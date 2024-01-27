@@ -3,10 +3,25 @@ interface PostProps {
   content: string
   srcImg: string
   name: string
+  likesT?: number
+  categories?: string[]
+  handleClick?: () => void
 }
-const Post = ({ title, content, srcImg, name }: PostProps) => {
+
+const Post = ({
+  title,
+  content,
+  srcImg,
+  name,
+  handleClick,
+  likesT,
+  categories,
+}: PostProps) => {
   return (
-    <div className="bg-white p-4 rounded-xl shadow-2xl w-96 m-5 cursor-pointer">
+    <div
+      className="bg-white p-4 rounded-xl shadow-2xl w-96 m-5 cursor-pointer"
+      onClick={handleClick}
+    >
       <div className="flex items-center mb-4">
         <img
           src={srcImg}
@@ -21,7 +36,16 @@ const Post = ({ title, content, srcImg, name }: PostProps) => {
       </div>
       <p className="font-bold">{title}</p>
       <p className="mb-4">{content}</p>
-
+      <div className=" my-2 ">
+        {categories?.map((category, index) => (
+          <span
+            key={index}
+            className="inline-block bg-indigo-300 text-white   rounded-full px-3 py-1 text-sm font-semibold mr-2"
+          >
+            {`#${category}`}
+          </span>
+        ))}
+      </div>
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <button className="flex items-center text-gray-500 mr-4">
@@ -32,7 +56,7 @@ const Post = ({ title, content, srcImg, name }: PostProps) => {
             >
               <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
             </svg>
-            <span>99</span>
+            <span>{likesT}</span>
           </button>
         </div>
       </div>
