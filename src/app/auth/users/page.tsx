@@ -15,12 +15,12 @@ const UsersPage = () => {
   }, [])
   return (
     <Layout>
-      <div className="flex flex-col items-center gap-5 mt-10">
+      <div className="flex flex-col items-center gap-5 my-5">
         {users &&
           users.map((user: any) => (
             <div
               key={user.id}
-              className="flex items-center rounded-xl pl-5 bg-white h-20 w-1/5 text-indigo-900"
+              className="flex items-center rounded-xl pl-5 bg-white h-20 w-4/5 md:w-1/5 text-indigo-900"
             >
               <img
                 src={user.picture}
