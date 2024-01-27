@@ -2,7 +2,7 @@
 import { Layout } from '@/app/components/ui'
 import { useEffect, useState } from 'react'
 
-const page = () => {
+const UsersPage = () => {
   const [users, setUsers] = useState<any>([])
 
   const getUsers = async () => {
@@ -41,4 +41,4 @@ const page = () => {
   )
 }
 
-export default page
+export default UsersPage

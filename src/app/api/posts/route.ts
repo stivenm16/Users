@@ -1,4 +1,3 @@
-import { User } from 'next-auth'
 import { NextResponse } from 'next/server'
 import { key, url } from '../global'
 import { PostType } from '@/app/types/users'
